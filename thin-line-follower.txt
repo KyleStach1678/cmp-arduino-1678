@@ -1,0 +1,45 @@
+class color(){
+	bool isFollowing;
+	bool turnL;
+	int countdown;
+	void step()
+	{
+		if(isFollowing)
+		{
+			if(countdown==0)
+			{
+				if(L&&!R)
+				{
+					turnL=true;
+					countdown=10;
+				}
+				if(R&&!L)
+				{
+					turnR=false;
+					countdown=10;
+				}
+				if(R&&L)
+				{
+					turnL~=;
+					countdown=10;
+				}
+				if(!R&&!L)
+				{
+					tankdrive(1, 1);
+				}
+			}
+			if(countdown>0)
+			{
+				if(turnL) tankdrive(0, 1);
+				else tankdrive(1, 0);
+				countdown--;
+				if(countdown==0) countdown=-1;
+			}
+			if(countdown==-1)
+			{
+				tankdrive(1, 1);
+				if(!R&&!L) countdown=0;
+			}
+		}
+	}			
+}
