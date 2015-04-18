@@ -15,7 +15,7 @@ class color(){
 				}
 				if(R&&!L)
 				{
-					turnR=false;
+					turnL=false;
 					countdown=10;
 				}
 				if(R&&L)
