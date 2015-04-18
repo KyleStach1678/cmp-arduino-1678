@@ -1,58 +1,23 @@
-#define COLOR_BLACK 0
-#define COLOR_DARKGRAY 85
-#define COLOR_LIGHTGRAY 170
-#define COLOR_WHITE 255
-
-class AnalogInput {
-public:
-  AnalogInput(int pin) : pin(pin) {}
-  ~AnalogInput() {}
-  int Read() {
-    return analogRead(pin);
-  }
-private:
-  int pin;
-};
-
-class LineFollower
-{
-public:
-  LineFollower(int leftPin, int rightPin) : left(leftPin), right(rightPin) {}
-  int ReadLeftColor() {
-    int val = left.Read();
-    if (val < 420) {
-      return COLOR_BLACK;
-    } else if (val < 505) {
-      return COLOR_DARKGRAY;
-    } else if (val < 574) {
-      return COLOR_LIGHTGRAY;
-    } else {
-      return COLOR_WHITE;
-    }
-  }
-  int ReadRightColor() {
-    int val = right.Read();
-    if (val < 400) {
-      return COLOR_BLACK;
-    } else if (val < 500) {
-      return COLOR_DARKGRAY;
-    } else if (val < 550) {
-      return COLOR_LIGHTGRAY;
-    } else {
-      return COLOR_WHITE;
-    }
-  }
-private:
-  AnalogInput left, right;
-};
-
+#include <Servo.h>//this must be the first thing included
+#include "Arduino.h"
+#include "color_sensor.h"
+#include "drivetrain.h"
+float stp;
+ 
+Drivebase drivetrain;
 LineFollower follower(0, 1);
 
 void setup() {
   Serial.begin(9600);
+  stp = 0;
+  drivetrain.SetPins(11, 10);
+  drivetrain.Zero(97, 97);
 }
 
 void loop() {
+  stp += .02;
+//  drivetrain.TankDrive(sin(stp) * .25 + .75, cos(stp) * .25 + .75);
+  drivetrain.TankDrive(1,1.2);
   int leftColor = follower.ReadLeftColor();
   int rightColor = follower.ReadRightColor();
   Serial.print(leftColor);
