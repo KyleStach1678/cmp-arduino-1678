@@ -16,7 +16,7 @@ private:
   int pin;
 };
 
-class LineFollower
+class LineFollower//5V to photoresistor to 3000ohm resistor, input between
 {
 public:
   LineFollower(int leftPin, int rightPin) : left(leftPin), right(rightPin) {}

@@ -23,7 +23,7 @@ public:
     right.attach(rightPin);
   }
   void TankDrive(float leftInp, float rightInp) {
-    float leftPower = leftInp * 7 + zeroL; // At 96 the servo does not turn
+    float leftPower = leftInp * 7 + zeroL;
     float rightPower = -rightInp * 7 + zeroR;
     left.write(leftPower);
     right.write(rightPower);
