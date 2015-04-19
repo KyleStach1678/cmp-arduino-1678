@@ -22,11 +22,11 @@ public:
   LineFollower(int leftPin, int rightPin) : left(leftPin), right(rightPin) {}
   int ReadLeftColor() {
     int val = left.Read();
-    if (val < 420) {
+    if (val < 100) {
       return COLOR_BLACK;
-    } else if (val < 505) {
+    } else if (val < 200) {
       return COLOR_DARKGRAY;
-    } else if (val < 574) {
+    } else if (val < 300) {
       return COLOR_LIGHTGRAY;
     } else {
       return COLOR_WHITE;
@@ -36,10 +36,10 @@ public:
     int val = right.Read();
     if (val < 100) {
       return COLOR_BLACK;
-    } else if (val < 150
+    } else if (val < 200
     ) {
       return COLOR_DARKGRAY;
-    } else if (val < 200) {
+    } else if (val < 300) {
       return COLOR_LIGHTGRAY;
     } else {
       return COLOR_WHITE;
