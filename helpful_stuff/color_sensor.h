@@ -34,15 +34,22 @@ public:
   }
   int ReadRightColor() {
     int val = right.Read();
-    if (val < 400) {
+    if (val < 100) {
       return COLOR_BLACK;
-    } else if (val < 500) {
+    } else if (val < 150
+    ) {
       return COLOR_DARKGRAY;
-    } else if (val < 550) {
+    } else if (val < 200) {
       return COLOR_LIGHTGRAY;
     } else {
       return COLOR_WHITE;
     }
+  }
+  int ReadLeft() {
+    return left.Read();
+  }
+  int ReadRight() {
+    return right.Read();
   }
 private:
   AnalogInput left, right;
