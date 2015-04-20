@@ -27,7 +27,7 @@ public:
     return clicks;
   }
   void Update(bool forward) {
-    Serial.println(wasTriggered);
+//    Serial.println(wasTriggered);
     if (!wasTriggered && analogRead(pin) > ((minValue + maxValue) / 2)) {
       clicks += (forward ? 1 : -1);
     }

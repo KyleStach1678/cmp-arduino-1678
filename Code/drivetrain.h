@@ -1,3 +1,6 @@
+#ifndef DRIVETRAIN_INCLUDED
+#define DRIVETRAIN_INCLUDED
+
 #include "Arduino.h"
 #include "encoder.h"
 class Drivebase
@@ -51,3 +54,5 @@ public:
     TankDrive(0, 0);
   }
 };
+
+#endif
